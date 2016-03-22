@@ -5,3 +5,5 @@
 
 http协议解析。
 
+使用wsgi和paste.deploy技术。
+
