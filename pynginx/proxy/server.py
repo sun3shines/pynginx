@@ -11,8 +11,9 @@ class ProxyServer(Server):
         return Connection
 
 def init():
-    proxies.put(('127.0.0.1',7013))
-
+    proxies.add(('127.0.0.1',7013))
+    proxies.add(('127.0.0.1',7023))
+    
 if __name__ == '__main__':
 
     init()

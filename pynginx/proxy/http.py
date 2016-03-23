@@ -54,6 +54,7 @@ class Response(Buffer):
         self.headbuf = []
         self.bodylen = 0
         self.chunk_size = 4096
+        self._chunk = False
 
     @property
     def allow(self):
@@ -69,7 +70,7 @@ class Response(Buffer):
                 self.bodylen = int(line.split(':')[1].strip())
             elif line.startswith('Transfer-Encoding'):
                 # Transfer-Encoding
-                self._chunk = 'chunked' == line.split(':')[1].strip()
+                self._chunk = ('chunked' == line.split(':')[1].strip())
             else:
                 pass
         self.wfile.write(''.join(self.headbuf))

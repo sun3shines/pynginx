@@ -21,6 +21,7 @@ class Schedule:
 
     def get(self):
         host,port = self.cache[self.polling_index]
+        print host,port
         return Stream(host,port).sock
     
     @property
