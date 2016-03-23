@@ -48,6 +48,7 @@ class Schedule:
         return elm in self.cache
     
     def get(self):
+        sock = None
         while True:
             i = self.index
             while -1 == i:
@@ -64,6 +65,7 @@ class Schedule:
                 self.delete((host,port))
                 continue
             break
+        return sock
  
     @property
     def length(self):

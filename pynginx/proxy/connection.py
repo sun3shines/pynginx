@@ -10,7 +10,6 @@ class Connection:
         self.addr = addr
 
     def handle(self):  
- 
         reader = self.sock
         writer = proxies.get()
         http_method = Request(reader,writer).handle()
