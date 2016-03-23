@@ -1,6 +1,6 @@
 
 
-python实现的负载均衡，模拟nginx负载均衡，支持
+python实现的负载均衡，模拟nginx负载均衡，算法层，和数据层
 
 Static算法,Random算法,Round robin算法,Hash算法,CARP算法,Consistent hash算法
 
