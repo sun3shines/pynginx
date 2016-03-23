@@ -1,31 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from pynginx.core.thread.daemon import THDaemon
+from pynginx.core.server.thread import Server
+from pynginx.proxy.connection import Connection
+from pynginx.globalx.static import proxies
 
-from pynginx.proxy.request import PRequest
-from pynginx.core.thread.worker import Worker
-
-from pynginx.globalx.static import s
-
-class PWorker(Worker):
-    @property
-    def request_class(self):
-        return PRequest
-
-class Proxy(THDaemon):
+class ProxyServer(Server):
 
     @property
-    def thread_class(self):
-        return PWorker
+    def connection_class(self):
+        return Connection
 
 def init():
-
-    s.put(('127.0.0.1',7011))
-    s.put(('127.0.0.1',7012))
-    s.put(('127.0.0.1',7013))
-
+    proxies.put(('127.0.0.1',7013))
 
 if __name__ == '__main__':
 
     init()
-    Proxy('127.0.0.1',7010).run()
+    ProxyServer('127.0.0.1',7090).run()

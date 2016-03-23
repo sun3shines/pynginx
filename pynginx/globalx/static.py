@@ -1,4 +1,4 @@
 
 from pynginx.schedule import Schedule
 
-s = Schedule()
+proxies = Schedule()

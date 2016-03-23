@@ -5,6 +5,7 @@
 
 import time
 import threading
+from pynginx.client.stream import Stream
 
 class Schedule:
 
@@ -19,8 +20,9 @@ class Schedule:
             self.lock.release()
 
     def get(self):
-        return self.cache[self.polling_index]
-
+        host,port = self.cache[self.polling_index]
+        return Stream(host,port).sock
+    
     @property
     def length(self):
         return len(self.cache)

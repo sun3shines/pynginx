@@ -8,7 +8,7 @@ class Connection:
 
         self.timeout = 5
 
-    def process(self):
+    def handle(self):
         for data in self.read():
             print data
             print len(data)

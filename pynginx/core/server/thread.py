@@ -17,11 +17,11 @@ class Worker(threading.Thread):
         
         self.sock = sock
         self.addr = addr
-        self.connection_calss = connection_class
+        self.connection_class = connection_class
 
     def run(self):
-        conn = self.connnection_class(self.sock,self.addr)
-        conn.process()
+        conn = self.connection_class(self.sock,self.addr)
+        conn.handle()
             
 class Server(BaseServer):
 

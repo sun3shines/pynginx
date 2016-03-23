@@ -23,5 +23,5 @@ class Server:
 
         for sock,addr in Tcp(self.host,self.port).server():
             conn = self.connection_class(sock,addr)
-            conn.process()
+            conn.handle()
 

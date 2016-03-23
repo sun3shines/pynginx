@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from pynginx.core.request import Request
-from pynginx.globalx.static import s
-from pynginx.client.stream import Stream
+from pynginx.globalx.static import proxies
+from pynginx.proxy.http import Request,Response
 
-class PRequest(Request):
+class Connection:
    
-    def process(self):
+    def __init__(self,sock,addr):
+        self.sock = sock
+        self.addr = addr
 
-        host,port = s.get()
-        c = Stream(host,port)
-        for data in self.read():
-            c.sendbody(data)
+    def handle(self):  
+ 
+        reader = self.sock
+        writer = proxies.get()
+        http_method = Request(reader,writer).handle()
+        Response(writer,reader,http_method).handle()
         
-        print 'transmit to %s %s' % (host,port)
-        buf = c.read()
-        print 'buffer ',buffer
-        self.write(buf)
-        c.close()
-        self.close()
 
