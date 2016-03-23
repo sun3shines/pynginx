@@ -10,8 +10,13 @@ class PRequest(Request):
 
         host,port = s.get()
         c = Stream(host,port)
-        for data in self.reader():
+        for data in self.read():
             c.sendbody(data)
+        
         print 'transmit to %s %s' % (host,port)
+        buf = c.read()
+        print 'buffer ',buffer
+        self.write(buf)
         c.close()
+        self.close()
 

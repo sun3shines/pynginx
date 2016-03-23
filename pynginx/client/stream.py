@@ -32,7 +32,14 @@ class Stream:
                     break
         else:
             self.c.send(body)
-
+            
+    def read(self,amt=None):
+        if not amt:
+            s = self.c.recv(amt)
+        else:
+            s = self.c.recv()
+        return s
+    
 if __name__ == '__main__':
 
     s = Stream('127.0.0.1',7010)
