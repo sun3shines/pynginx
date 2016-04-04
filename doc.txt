@@ -1,7 +1,17 @@
 
-模拟nginx负载均衡，支持轮询等算法。
 
-网络框架设计。tcp/connection/buffer层，实现客户端和代理服务。
+python实现的负载均衡，模拟nginx负载均衡，算法层，和数据层
 
-http协议解析。
+Static算法,Random算法,Round robin算法,Hash算法,CARP算法,Consistent hash算法
+
+随机,轮询，加权轮询，动态轮询，最快算法，最少连接，观察算法，预判算法
+
+支持端口可用监控线程，动态维护代理地址列表缓存
+
+网络框架设计。tcp/connection/buffer层，实现客户端和代理服务。 
+
+以 bridge 方式 连接client和server
+
+实现http协议解析，http协议转发。支持content-length 和 chunked方式传输文件。
+
 
