@@ -1,4 +1,4 @@
 
-from pynginx.schedule import Schedule
+from pynginx.schedule.polling import Schedule
 
-s = Schedule()
+proxies = Schedule()
